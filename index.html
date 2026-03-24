@@ -3,7 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DevCore Studio — Desarrollo Web & Plataformas Educativas</title>
+  <title>DevCoreX Studio — Desarrollo Web & Plataformas Educativas</title>
+
+  <!-- Meta description -->
+  <meta name="description" content="DevCoreX Studio: desarrollamos plataformas educativas, sistemas web y Moodle personalizados. Soluciones digitales a medida para empresas e instituciones." />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://tudominio.com/" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DevCoreX Studio — Desarrollo Web & Plataformas Educativas" />
+  <meta property="og:description" content="Desarrollamos plataformas Moodle, universidades en línea y sistemas web a medida." />
+  <meta property="og:image" content="https://tudominio.com/imagenes/og-preview.jpg" />
+  <meta property="og:url" content="https://tudominio.com/" />
+  <meta property="og:locale" content="es_MX" />
+
+  <link rel="icon" type="image/x-icon" href="imagenes/logo.ico" />
+  <link rel="apple-touch-icon" href="imagenes/logo.ico" />
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DevCoreX Studio",
+    "url": "https://tudominio.com",
+    "email": "devcore.studio.mx@gmail.com",
+    "telephone": "+528281737895",
+    "description": "Desarrollo de plataformas educativas, Moodle y sistemas web a medida.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "MX"
+    }
+  }
+  </script>
+
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -23,7 +63,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">Dev<span>Core</span></a>
+  <a href="#hero" class="nav-logo">Dev<span>CoreX</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">Nosotros</a></li>
     <li><a href="#services">Servicios</a></li>
@@ -76,19 +116,23 @@
         <div class="code-body">
           <div><span class="c-comment">// Sistema de gestión académica</span></div>
           <div><span class="c-keyword">class</span> <span class="c-fn">CampusManager</span> {</div>
-          <div>&nbsp;&nbsp;<span class="c-keyword">function</span> <span class="c-fn">loadDocentes</span>() {</div>
+
+          <div>&nbsp;&nbsp;<span class="c-keyword">function</span> <span class="c-fn">loadDocentes</span>(<span class="c-var">$cursoId</span>) {</div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-var">$db</span> = <span class="c-fn">Database</span>::<span class="c-fn">connect</span>();</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-var">$docentes</span> = <span class="c-var">$db</span>-&gt;<span class="c-fn">query</span>(<span class="c-str">"SELECT * FROM docentes"</span>);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-var">$docentes</span> = <span class="c-var">$db</span>-&gt;<span class="c-fn">query</span>(<span class="c-str">"SELECT * FROM docentes WHERE curso_id = ?"</span>, [<span class="c-var">$cursoId</span>]);</div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">return</span> <span class="c-var">$docentes</span>;</div>
           <div>&nbsp;&nbsp;}</div>
-          <div>&nbsp;&nbsp;<span class="c-keyword">function</span> <span class="c-fn">generarPlantilla</span>() {</div>
+
+          <div>&nbsp;&nbsp;<span class="c-keyword">function</span> <span class="c-fn">generarPlantilla</span>(<span class="c-var">$datos</span>) {</div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-comment">// Exportación PDF con jsPDF</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">return</span> <span class="c-str">"plantilla_generada.pdf"</span>;</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-var">$pdf</span> = <span class="c-keyword">new</span> <span class="c-fn">jsPDF</span>(<span class="c-var">$datos</span>);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">return</span> <span class="c-var">$pdf</span>-&gt;<span class="c-fn">export</span>(<span class="c-str">"plantilla_generada.pdf"</span>);</div>
           <div>&nbsp;&nbsp;}</div>
           <div>}</div>
           <br>
           <div><span class="c-comment">// Plataforma académica activa</span></div>
           <div><span class="c-var">$campus</span> = <span class="c-keyword">new</span> <span class="c-fn">CampusManager</span>();</div>
+          <div><span class="c-var">$lista</span> = <span class="c-var">$campus</span>-&gt;<span class="c-fn">loadDocentes</span>(<span class="c-var">$cursoId</span>);</div>
         </div>
       </div>
     </div>
@@ -262,9 +306,9 @@
             <span class="tech-tag">MySQL</span>
             <span class="tech-tag">Responsive Design</span>
           </div>
-          <a href="https://tu-url-aqui.com" target="_blank" class="project-btn">
+          <!--<a href="https://tu-url-aqui.com" target="_blank" class="project-btn">
             Ver proyecto <span>→</span>
-          </a>
+          </a>-->
         </div>
       </div>
 
@@ -283,7 +327,7 @@
             <span class="tech-tag">EmailJS</span>
             <span class="tech-tag">Responsive Design</span>
           </div>
-          <a href="https://tu-url-aqui.com" target="_blank" class="project-btn">
+          <a href="https://mcmfianzas.com" target="_blank" class="project-btn">
             Ver proyecto <span>→</span>
           </a>
         </div>
@@ -325,7 +369,7 @@
           <div class="tech-tags">
             <span class="tech-tag">Plugins</span>
           </div>
-          <a href="https://tu-url-aqui.com" target="_blank" class="project-btn">
+          <a href="https://upacampus.com" target="_blank" class="project-btn">
             Ver proyecto <span>→</span>
           </a>
         </div>
@@ -379,17 +423,16 @@
 
       <div class="cert-text">
         <div class="section-label">Respaldo oficial</div>
-        <h2 class="section-title">Certificados por <em>Moodle</em></h2>
-        <p>Somos un equipo certificado oficialmente por Moodle, la plataforma de aprendizaje en línea más utilizada en el mundo. Esta certificación respalda nuestra capacidad técnica para implementar, personalizar y administrar entornos educativos digitales de alto nivel.</p>
-        <p>Cuando trabajas con nosotros, no solo obtienes una plataforma funcional — obtienes la garantía de que está construida por profesionales con conocimiento validado y reconocido internacionalmente.</p>
-        <div class="cert-badge">
-          <span class="cert-badge-icon">✅</span>
-          Certificación Moodle Partner verificada
-        </div>
+        <h2 class="cert-title">
+          Somos un equipo<br>
+          <span class="cert-accent">certificado</span><br>
+          por <span class="cert-accent2">Moodle.</span>
+        </h2>
+        <p>Contamos con certificación oficial de Moodle, la plataforma de aprendizaje en línea más utilizada en el mundo. Garantía de calidad y conocimiento validado internacionalmente.</p>
       </div>
 
       <div class="cert-image-wrap">
-        <img src="imagenes/certificadomoodle.jpeg" alt="Certificado oficial Moodle" class="cert-img" />
+        <img src="imagenes/moodle.jpg" alt="Logo oficial Moodle" class="moodle-logo" />
         <div class="cert-glow"></div>
       </div>
 
@@ -422,7 +465,7 @@
 
 <div class="divider"></div>
 
-<!-- TESTIMONIOS -->
+<!-- TESTIMONIOS
 <section id="testimonials">
   <div class="container">
     <div class="reveal" style="text-align:center; max-width:560px; margin:0 auto 1rem;">
@@ -469,7 +512,7 @@
     </div>
   </div>
 </section>
-
+-->
 <div class="divider"></div>
 
 <!-- CONTACTO -->
@@ -564,12 +607,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <a href="#hero" class="footer-logo">Dev<span style="color:var(--text)">Core</span></a>
-    <p class="footer-copy">© 2025 DevCore Studio. Todos los derechos reservados.</p>
+    <a href="#hero" class="footer-logo">Dev<span style="color:var(--text)">CoreX</span></a>
+    <p class="footer-copy">© 2025 DevCoreX Studio. Todos los derechos reservados.</p>
     <div class="footer-social">
       <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
       <a href="https://wa.me/528281737895?text=Hola%20me%20interesa%20información%20sobre%20sus%20servicios%20de%20desarrollo%20web" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="mailto:devcore.studio.mx@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="#" onclick="enviarConsulta(); return false;" title="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
     </div>
   </div>
 </footer>
