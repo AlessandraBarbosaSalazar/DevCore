@@ -818,17 +818,33 @@
 
 
 
-
-
     /* ── CERTIFICACIÓN MOODLE ── */
     #certificacion { background: var(--bg2); }
 
     .cert-grid {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;  /* antes era 1fr 1fr, ahora la columna de imagen es más ancha */
+      grid-template-columns: 1fr 1.4fr;
       gap: 5rem;
       align-items: center;
+    }
+
+    .cert-title {
+      font-family: var(--font-head) !important;
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: .05em;
+      color: var(--text);
       margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .cert-accent  { color: var(--accent); }
+    .cert-accent2 { color: var(--accent2); }
+
+    .cert-text p {
+      color: var(--text-dim);
+      font-size: .97rem;
+      line-height: 1.75;
     }
 
     .cert-image-wrap {
@@ -839,47 +855,23 @@
       overflow: visible;
     }
 
-    .cert-text p {
-      color: var(--text-dim);
-      font-size: .97rem;
-      margin-top: 1.2rem;
-      line-height: 1.75;
-    }
-
-    .cert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .6rem;
-      margin-top: 2rem;
-      background: rgba(0,229,255,.07);
-      border: 1px solid rgba(0,229,255,.22);
-      border-radius: 40px;
-      padding: .5rem 1.2rem;
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: .04em;
-    }
-
-    .cert-badge-icon { font-size: 1rem; }
-
-    .cert-img {
+    .moodle-logo {
       width: 100%;
       max-width: 650px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: 0 25px 70px rgba(0,0,0,.5);
       position: relative;
       z-index: 1;
-      transition: transform .3s;
+      filter: drop-shadow(0 0 40px rgba(124,92,252,.3));
+      transition: transform .3s, filter .3s;
     }
-
-    .cert-img:hover { transform: scale(1.02); }
+    .moodle-logo:hover {
+      transform: scale(1.03);
+      filter: drop-shadow(0 0 60px rgba(124,92,252,.5));
+    }
 
     .cert-glow {
       position: absolute;
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(124,92,252,.2) 0%, transparent 70%);
       filter: blur(40px);
@@ -890,9 +882,11 @@
       .cert-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+        text-align: center;
       }
-      .cert-img { max-width: 100%; }
+      .moodle-logo { max-width: 280px; }
     }
+
 
 
 
