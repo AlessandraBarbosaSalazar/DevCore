@@ -42,16 +42,63 @@
   }
   </script>
 
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8S31F49TZZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
+  // Configuración base
   gtag('config', 'G-8S31F49TZZ');
-</script>
 
+  // Evento global para debugging (opcional)
+  console.log("Analytics activo");
+</script>
+  
+<script>
+
+// 📲 WhatsApp (todos los links)
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'click_whatsapp', {
+      event_category: 'contacto',
+      event_label: 'whatsapp_general'
+    });
+  });
+});
+
+// 📞 Teléfono
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'click_telefono', {
+      event_category: 'contacto',
+      event_label: 'telefono'
+    });
+  });
+});
+
+// 🧲 Botones importantes
+document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+  btn.addEventListener('click', () => {
+    gtag('event', 'click_boton', {
+      event_category: 'interaccion',
+      event_label: btn.innerText
+    });
+  });
+});
+
+// 📁 Portafolio (proyectos)
+document.querySelectorAll('.project-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    gtag('event', 'click_portafolio', {
+      event_category: 'interaccion',
+      event_label: 'ver_proyecto'
+    });
+  });
+});
+
+</script>
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
